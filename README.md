@@ -1,3 +1,9 @@
+#### DDA: Stripped-down version of ANARCI that has useful library functions. The rest of the functionality has been removed.
+
+Original repo text below:
+
+---
+---
 ```
 ANARCI                                                 \\    //
 Antibody Numbering and Antigen Receptor ClassIfication  \\  //
