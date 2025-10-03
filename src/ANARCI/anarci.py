@@ -44,6 +44,7 @@ Notes:
 """
 
 import os
+
 from ANARCI import schemes
 
 # from Bio.SearchIO.HmmerIO import Hmmer3TextParser as HMMERParser
@@ -54,41 +55,41 @@ from ANARCI import schemes
 
 # all_species = list(all_germlines["V"]["H"].keys())
 
-amino_acids = sorted(list("QWERTYIPASDFGHKLCVNM"))
-set_amino_acids = set(amino_acids)
-anarci_path = os.path.split(__file__)[0]
+# amino_acids = sorted(list("QWERTYIPASDFGHKLCVNM"))
+# set_amino_acids = set(amino_acids)
+# anarci_path = os.path.split(__file__)[0]
 
-scheme_short_to_long = {
-    "m": "martin",
-    "c": "chothia",
-    "k": "kabat",
-    "imgt": "imgt",
-    "kabat": "kabat",
-    "chothia": "chothia",
-    "martin": "martin",
-    "i": "imgt",
-    "a": "aho",
-    "aho": "aho",
-    "wolfguy": "wolfguy",
-    "w": "wolfguy",
-}
+# scheme_short_to_long = {
+#     "m": "martin",
+#     "c": "chothia",
+#     "k": "kabat",
+#     "imgt": "imgt",
+#     "kabat": "kabat",
+#     "chothia": "chothia",
+#     "martin": "martin",
+#     "i": "imgt",
+#     "a": "aho",
+#     "aho": "aho",
+#     "wolfguy": "wolfguy",
+#     "w": "wolfguy",
+# }
 
-scheme_names = list(scheme_short_to_long.keys())
-chain_type_to_class = {
-    "H": "H",
-    "K": "L",
-    "L": "L",
-    "A": "A",
-    "B": "B",
-    "G": "G",
-    "D": "D",
-}
+# scheme_names = list(scheme_short_to_long.keys())
+# chain_type_to_class = {
+#     "H": "H",
+#     "K": "L",
+#     "L": "L",
+#     "A": "A",
+#     "B": "B",
+#     "G": "G",
+#     "D": "D",
+# }
 
-HMM_path = os.path.join(anarci_path, "dat", "HMMs")
+# HMM_path = os.path.join(anarci_path, "dat", "HMMs")
 
-all_reference_states = list(
-    range(1, 129)
-)  # These are the IMGT reference states (matches)
+# all_reference_states = list(
+#     range(1, 129)
+# )  # These are the IMGT reference states (matches)
 
 
 # class HMMscanError(Exception):
