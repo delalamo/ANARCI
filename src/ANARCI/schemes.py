@@ -72,7 +72,37 @@ Other schemes can be implemented following the template above.
 '''
 
 # Alphabet used for insertion (last (-1th) is a blank space for no insertion)
-alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK", "LL", "MM", "NN", "OO", "PP", "QQ", "RR", "SS", "TT", "UU", "VV", "WW", "XX", "YY", "ZZ", " "]
+# Extended alphabet: A-Z, then AA-AZ, BA-BZ, ..., ZA-ZZ, then AAA-AAZ, etc.
+# This provides unlimited insertion codes for mmCIF output format.
+def _generate_extended_alphabet(max_codes: int = 1000) -> list:
+    """Generate extended insertion codes: A-Z, AA-AZ, BA-BZ, ..., AAA-AAZ, etc."""
+    codes = []
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    # Single letters: A-Z
+    codes.extend(list(letters))
+
+    # Double letters: AA-ZZ (26*26 = 676 codes)
+    for first in letters:
+        for second in letters:
+            codes.append(first + second)
+            if len(codes) >= max_codes:
+                codes.append(" ")  # Blank for no insertion
+                return codes
+
+    # Triple letters: AAA-ZZZ (26*26*26 = 17576 codes)
+    for first in letters:
+        for second in letters:
+            for third in letters:
+                codes.append(first + second + third)
+                if len(codes) >= max_codes:
+                    codes.append(" ")  # Blank for no insertion
+                    return codes
+
+    codes.append(" ")  # Blank for no insertion
+    return codes
+
+alphabet = _generate_extended_alphabet()
 
 # Blosum62 matrix. Used in some annotation methods to recognise pre-defined motifs
 blosum62 = {('B', 'N'): 3, ('W', 'L'): -2, ('G', 'G'): 6, ('X', 'S'): 0, ('X', 'D'): -1, ('K', 'G'): -2, ('S', 'E'): 0, ('X', 'M'): -1, ('Y', 'E'): -2, ('W', 'R'): -3, ('I', 'R'): -3, ('X', 'Z'): -1, ('H', 'E'): 0, ('V', 'M'): 1, ('N', 'R'): 0, ('I', 'D'): -3, ('F', 'D'): -3, ('W', 'C'): -2, ('N', 'A'): -2, ('W', 'Q'): -2, ('L', 'Q'): -2, ('S', 'N'): 1, ('Z', 'K'): 1, ('V', 'N'): -3, ('Q', 'N'): 0, ('M', 'K'): -1, ('V', 'H'): -3, ('G', 'E'): -2, ('S', 'L'): -2, ('P', 'R'): -2, ('D', 'A'): -2, ('S', 'C'): -1, ('E', 'D'): 2, ('Y', 'G'): -3, ('W', 'P'): -4, ('X', 'X'): -1, ('Z', 'L'): -3, ('Q', 'A'): -1, ('V', 'Y'): -1, ('W', 'A'): -3, ('G', 'D'): -1, ('X', 'P'): -2, ('K', 'D'): -1, ('T', 'N'): 0, ('Y', 'F'): 3, ('W', 'W'): 11, ('Z', 'M'): -1, ('L', 'D'): -4, ('M', 'R'): -1, ('Y', 'K'): -2, ('F', 'E'): -3, ('M', 'E'): -2, ('S', 'S'): 4, ('X', 'C'): -2, ('Y', 'L'): -1, ('H', 'R'): 0, ('P', 'P'): 7, ('K', 'C'): -3, ('S', 'A'): 1, ('P', 'I'): -3, ('Q', 'Q'): 5, ('L', 'I'): 2, ('P', 'F'): -4, ('B', 'A'): -2, ('Z', 'N'): 0, ('M', 'Q'): 0, ('V', 'I'): 3, ('Q', 'C'): -3, ('I', 'H'): -3, ('Z', 'D'): 1, ('Z', 'P'): -1, ('Y', 'W'): 2, ('T', 'G'): -2, ('B', 'P'): -2, ('P', 'A'): -1, ('C', 'D'): -3, ('Y', 'H'): 2, ('X', 'V'): -1, ('B', 'B'): 4, ('Z', 'F'): -3, ('M', 'L'): 2, ('F', 'G'): -3, ('S', 'M'): -1, ('M', 'G'): -3, ('Z', 'Q'): 3, ('S', 'Q'): 0, ('X', 'A'): 0, ('V', 'T'): 0, ('W', 'F'): 1, ('S', 'H'): -1, ('X', 'N'): -1, ('B', 'Q'): 0, ('K', 'A'): -1, ('I', 'Q'): -3, ('X', 'W'): -2, ('N', 'N'): 6, ('W', 'T'): -2, ('P', 'D'): -1, ('B', 'C'): -3, ('I', 'C'): -1, ('V', 'K'): -2, ('X', 'Y'): -1, ('K', 'R'): 2, ('Z', 'R'): 0, ('W', 'E'): -3, ('T', 'E'): -1, ('B', 'R'): -1, ('L', 'R'): -2, ('Q', 'R'): 1, ('X', 'F'): -1, ('T', 'S'): 1, ('B', 'D'): 4, ('Z', 'A'): -1, ('M', 'N'): -2, ('V', 'D'): -3, ('F', 'A'): -2, ('X', 'E'): -1, ('F', 'H'): -1, ('M', 'A'): -1, ('K', 'Q'): 1, ('Z', 'S'): 0, ('X', 'G'): -1, ('V', 'V'): 4, ('W', 'D'): -4, ('X', 'H'): -1, ('S', 'F'): -2, ('X', 'L'): -1, ('B', 'S'): 0, ('S', 'G'): 0, ('P', 'M'): -2, ('Y', 'M'): -1, ('H', 'D'): -1, ('B', 'E'): 1, ('Z', 'B'): 1, ('I', 'E'): -3, ('V', 'E'): -2, ('X', 'T'): 0, ('X', 'R'): -1, ('R', 'R'): 5, ('Z', 'T'): -1, ('Y', 'D'): -3, ('V', 'W'): -3, ('F', 'L'): 0, ('T', 'C'): -1, ('X', 'Q'): -1, ('B', 'T'): -1, ('K', 'N'): 0, ('T', 'H'): -2, ('Y', 'I'): -1, ('F', 'Q'): -3, ('T', 'I'): -1, ('T', 'Q'): -1, ('P', 'L'): -3, ('R', 'A'): -1, ('B', 'F'): -3, ('Z', 'C'): -3, ('M', 'H'): -2, ('V', 'F'): -1, ('F', 'C'): -2, ('L', 'L'): 4, ('M', 'C'): -1, ('C', 'R'): -3, ('D', 'D'): 6, ('E', 'R'): 0, ('V', 'P'): -2, ('S', 'D'): 0, ('E', 'E'): 5, ('W', 'G'): -2, ('P', 'C'): -3, ('F', 'R'): -3, ('B', 'G'): -1, ('C', 'C'): 9, ('I', 'G'): -4, ('V', 'G'): -3, ('W', 'K'): -3, ('G', 'N'): 0, ('I', 'N'): -3, ('Z', 'V'): -2, ('A', 'A'): 4, ('V', 'Q'): -2, ('F', 'K'): -3, ('T', 'A'): 0, ('B', 'V'): -3, ('K', 'L'): -2, ('L', 'N'): -3, ('Y', 'N'): -2, ('F', 'F'): 6, ('L', 'G'): -4, ('B', 'H'): 0, ('Z', 'E'): 4, ('Q', 'D'): 0, ('X', 'B'): -1, ('Z', 'W'): -3, ('S', 'K'): 0, ('X', 'K'): -1, ('V', 'R'): -3, ('K', 'E'): 1, ('I', 'A'): -1, ('P', 'H'): -2, ('B', 'W'): -4, ('K', 'K'): 5, ('H', 'C'): -3, ('E', 'N'): 0, ('Y', 'Q'): -1, ('H', 'H'): 8, ('B', 'I'): -3, ('C', 'A'): 0, ('I', 'I'): 4, ('V', 'A'): 0, ('W', 'I'): -3, ('T', 'F'): -2, ('V', 'S'): -2, ('T', 'T'): 5, ('F', 'M'): 0, ('L', 'E'): -3, ('M', 'M'): 5, ('Z', 'G'): -2, ('D', 'R'): -2, ('M', 'D'): -3, ('W', 'H'): -2, ('G', 'C'): -3, ('S', 'R'): -1, ('S', 'I'): -2, ('P', 'Q'): -1, ('Y', 'A'): -2, ('X', 'I'): -1, ('E', 'A'): -1, ('B', 'Y'): -3, ('K', 'I'): -3, ('H', 'A'): -2, ('P', 'G'): -2, ('F', 'N'): -3, ('H', 'N'): 1, ('B', 'K'): 0, ('V', 'C'): -1, ('T', 'L'): -1, ('P', 'K'): -1, ('W', 'S'): -3, ('T', 'D'): -1, ('T', 'M'): -1, ('P', 'N'): -2, ('K', 'H'): -1, ('T', 'R'): -1, ('Y', 'R'): -2, ('L', 'C'): -1, ('B', 'L'): -4, ('Z', 'Y'): -2, ('W', 'N'): -4, ('G', 'A'): 0, ('S', 'P'): -1, ('E', 'Q'): 2, ('C', 'N'): -3, ('H', 'Q'): 0, ('D', 'N'): 1, ('Y', 'C'): -2, ('L', 'H'): -3, ('E', 'C'): -4, ('Z', 'H'): 0, ('H', 'G'): -2, ('P', 'E'): -1, ('Y', 'S'): -2, ('G', 'R'): -2, ('B', 'M'): -3, ('Z', 'Z'): 4, ('W', 'M'): -1, ('Y', 'T'): -2, ('Y', 'P'): -3, ('Y', 'Y'): 7, ('T', 'K'): -1, ('Z', 'I'): -3, ('T', 'P'): -1, ('V', 'L'): 1, ('F', 'I'): 0, ('G', 'Q'): -2, ('L', 'A'): -1, ('M', 'I'): 1}
@@ -281,10 +311,12 @@ def _number_regions(sequence, state_vector, state_string , region_string,  regio
 
 
         # Reset the inssertion index if necessary and allowed. (Means the insertion code is meaningless and will be reannotated)
-        if insertion >= 25 and region in exclude_deletions:
-            insertion = 0 
-        
-        assert insertion < 25, "Too many insertions for numbering scheme to handle" # We ran out of letters.
+        # Use len(alphabet) - 1 since the last element is the blank space for no insertion
+        max_insertions = len(alphabet) - 1
+        if insertion >= max_insertions and region in exclude_deletions:
+            insertion = 0
+
+        assert insertion < max_insertions, f"Too many insertions ({insertion}) for numbering scheme to handle (max {max_insertions})"
             
     return _regions, start_index, end_index
 
