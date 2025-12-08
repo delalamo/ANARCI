@@ -74,7 +74,7 @@ Other schemes can be implemented following the template above.
 # Alphabet used for insertion (last (-1th) is a blank space for no insertion)
 # Extended alphabet: A-Z, then AA-AZ, BA-BZ, ..., ZA-ZZ, then AAA-AAZ, etc.
 # This provides unlimited insertion codes for mmCIF output format.
-def _generate_extended_alphabet(max_codes: int = 1000) -> list:
+def _generate_extended_alphabet(max_codes: int = 5000) -> list:
     """Generate extended insertion codes: A-Z, AA-AZ, BA-BZ, ..., AAA-AAZ, etc."""
     codes = []
     letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -509,12 +509,16 @@ def get_imgt_cdr(length, maxlength, start, end):
 
     for i in range(max(0, length-maxlength)):
         if not i % 2:
-            annotations[back] = (centre_right, za[back + backfactor])
+            # Ensure we don't exceed alphabet bounds
+            idx = min(abs(back + backfactor), len(za) - 1)
+            annotations[back] = (centre_right, za[idx])
             back -= 1
         else:
-            annotations[front] = (centre_left, az[front - frontfactor])
+            # Ensure we don't exceed alphabet bounds
+            idx = min(front - frontfactor, len(az) - 1)
+            annotations[front] = (centre_left, az[idx])
             front += 1
-    
+
     return annotations
 
 
