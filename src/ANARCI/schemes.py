@@ -478,11 +478,12 @@ def get_imgt_cdr(length, maxlength, start, end):
         return annotations
 
     front, back = 0, -1
-    #az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+    #az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     #za = "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
+    # Use extended alphabet for large CDR insertions
     az = alphabet[:-1]
-    za = az[::-1]
+    za = az[::-1]  # Reversed: za[-1]='A', za[-2]='B', etc. via negative indexing
 
     for i in range(min(length, maxlength)):
         if i % 2:
@@ -509,14 +510,13 @@ def get_imgt_cdr(length, maxlength, start, end):
 
     for i in range(max(0, length-maxlength)):
         if not i % 2:
-            # Ensure we don't exceed alphabet bounds
-            idx = min(abs(back + backfactor), len(za) - 1)
-            annotations[back] = (centre_right, za[idx])
+            # Position 112: use negative indexing into reversed alphabet
+            # za[-1]='A', za[-2]='B', etc. giving sequence order D,C,B,A
+            annotations[back] = (centre_right, za[back + backfactor])
             back -= 1
         else:
-            # Ensure we don't exceed alphabet bounds
-            idx = min(front - frontfactor, len(az) - 1)
-            annotations[front] = (centre_left, az[idx])
+            # Position 111: use forward alphabet counting up
+            annotations[front] = (centre_left, az[front - frontfactor])
             front += 1
 
     return annotations
