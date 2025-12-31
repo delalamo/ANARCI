@@ -11,10 +11,15 @@
             --accent-color: #e74c3c;
             --light-bg: #f8f9fa;
             --border-color: #dee2e6;
-            --fw-color: #e8f4fd;
-            --cdr1-color: #fff3cd;
-            --cdr2-color: #d4edda;
-            --cdr3-color: #f8d7da;
+            --fw-color: #e3f2fd;
+            --cdr1-color: #fff8e1;
+            --cdr2-color: #e8f5e9;
+            --cdr3-color: #fce4ec;
+            --heavy-color: #bbdefb;
+            --kappa-color: #c8e6c9;
+            --lambda-color: #ffe0b2;
+            --all-color: #e1bee7;
+            --gap-color: #f5f5f5;
         }
 
         * {
@@ -52,6 +57,11 @@
             margin-bottom: 0.5rem;
         }
 
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
         .subtitle {
             color: #666;
             font-size: 1.1rem;
@@ -60,7 +70,7 @@
         .legend {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin: 1.5rem 0;
             flex-wrap: wrap;
         }
@@ -69,11 +79,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .legend-color {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 4px;
             border: 1px solid var(--border-color);
         }
@@ -102,13 +113,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         th, td {
-            padding: 0.75rem 1rem;
+            padding: 0.5rem 0.75rem;
             text-align: center;
             border: 1px solid var(--border-color);
+            vertical-align: middle;
         }
 
         th {
@@ -117,40 +129,65 @@
             font-weight: 600;
             position: sticky;
             top: 0;
+            z-index: 10;
         }
 
-        th.scheme-header {
-            background: var(--secondary-color);
+        th.region-col {
+            background: #34495e;
+            width: 80px;
         }
 
-        .region-header {
-            background: #34495e !important;
-            font-weight: 700;
+        .region-cell {
+            font-weight: bold;
+            writing-mode: horizontal-tb;
         }
 
-        tr:nth-child(even) {
-            background-color: var(--light-bg);
+        /* Chain presence indicators */
+        .present {
+            font-weight: bold;
         }
 
-        tr:hover {
-            background-color: #e3f2fd;
-        }
-
-        .fw { background-color: var(--fw-color) !important; }
-        .cdr1 { background-color: var(--cdr1-color) !important; }
-        .cdr2 { background-color: var(--cdr2-color) !important; }
-        .cdr3 { background-color: var(--cdr3-color) !important; }
-
-        .insertion-note {
-            font-size: 0.8rem;
-            color: #666;
+        .gap {
+            color: #999;
             font-style: italic;
         }
 
-        .conserved {
+        .insertion-pt {
+            background: #fff59d !important;
             font-weight: bold;
-            color: var(--accent-color);
         }
+
+        /* Unique to specific chains */
+        .unique-h {
+            background: var(--heavy-color);
+        }
+
+        .unique-k {
+            background: var(--kappa-color);
+        }
+
+        .unique-l {
+            background: var(--lambda-color);
+        }
+
+        .unique-kl {
+            background: linear-gradient(135deg, var(--kappa-color) 50%, var(--lambda-color) 50%);
+        }
+
+        .common-all {
+            background: #f3e5f5;
+        }
+
+        .conserved {
+            background: #ffcdd2 !important;
+            font-weight: bold;
+        }
+
+        /* Region backgrounds */
+        .fw-region { background-color: var(--fw-color); }
+        .cdr1-region { background-color: var(--cdr1-color); }
+        .cdr2-region { background-color: var(--cdr2-color); }
+        .cdr3-region { background-color: var(--cdr3-color); }
 
         .notes {
             background: #fff9e6;
@@ -173,58 +210,23 @@
             margin-bottom: 0.25rem;
         }
 
-        .tab-container {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem 1.5rem 0;
-            background: white;
-            border-radius: 12px 12px 0 0;
+        .chain-header {
+            font-size: 1.1rem;
+            font-weight: bold;
         }
 
-        .tab {
-            padding: 0.75rem 1.5rem;
-            background: var(--light-bg);
-            border: none;
-            border-radius: 8px 8px 0 0;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .tab:hover {
-            background: #e3f2fd;
-        }
-
-        .tab.active {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .position-table {
-            font-size: 0.85rem;
-        }
-
-        .position-table th {
-            padding: 0.5rem;
-        }
-
-        .position-table td {
-            padding: 0.4rem 0.5rem;
+        .position-num {
             font-family: 'Monaco', 'Consolas', monospace;
+            font-weight: bold;
         }
 
-        .gap-marker {
-            color: #999;
-            font-style: italic;
+        .check {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .dash {
+            color: #bdbdbd;
         }
 
         footer {
@@ -234,596 +236,356 @@
             font-size: 0.9rem;
         }
 
+        /* Sticky first column */
+        td:first-child, th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+        }
+
+        td:first-child {
+            background: white;
+        }
+
+        .description {
+            text-align: left;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .legend {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            table {
-                font-size: 0.8rem;
-            }
-
-            th, td {
-                padding: 0.5rem;
-            }
+            body { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .legend { flex-direction: column; align-items: center; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 0.3rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Antibody Numbering Schemes Comparison</h1>
-            <p class="subtitle">ANARCI - Antibody Numbering and Antigen Receptor ClassIfication</p>
+            <h1>Antibody Chain Numbering Comparison</h1>
+            <p class="subtitle">ANARCI - Comparing Heavy, Kappa, and Lambda Chains using AHo Numbering</p>
 
             <div class="legend">
                 <div class="legend-item">
-                    <div class="legend-color" style="background: var(--fw-color);"></div>
-                    <span>Framework (FW)</span>
+                    <div class="legend-color" style="background: #f3e5f5;"></div>
+                    <span>All Chains</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color" style="background: var(--cdr1-color);"></div>
-                    <span>CDR1</span>
+                    <div class="legend-color" style="background: var(--heavy-color);"></div>
+                    <span>Heavy Only</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color" style="background: var(--cdr2-color);"></div>
-                    <span>CDR2</span>
+                    <div class="legend-color" style="background: var(--kappa-color);"></div>
+                    <span>Kappa Only</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color" style="background: var(--cdr3-color);"></div>
-                    <span>CDR3</span>
+                    <div class="legend-color" style="background: var(--lambda-color);"></div>
+                    <span>Lambda Only</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: linear-gradient(135deg, #c8e6c9 50%, #ffe0b2 50%);"></div>
+                    <span>Light Chains Only (K+L)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #fff59d;"></div>
+                    <span>Insertion Point</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffcdd2;"></div>
+                    <span>Conserved Residue</span>
                 </div>
             </div>
         </header>
 
-        <!-- Region Overview -->
+        <!-- Main Chain Comparison Table -->
         <div class="section">
-            <div class="section-header">Region Position Ranges by Scheme</div>
-            <div class="tab-container">
-                <button class="tab active" onclick="showTab('heavy')">Heavy Chain (VH)</button>
-                <button class="tab" onclick="showTab('light')">Light Chain (VL/VK)</button>
-            </div>
-
-            <div id="heavy" class="tab-content active">
-                <div class="section-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Region</th>
-                                <th class="scheme-header">IMGT</th>
-                                <th class="scheme-header">Chothia</th>
-                                <th class="scheme-header">Kabat</th>
-                                <th class="scheme-header">Martin</th>
-                                <th class="scheme-header">AHo</th>
-                                <th class="scheme-header">Wolfguy</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="fw">
-                                <td><strong>FW1</strong></td>
-                                <td>1-26</td>
-                                <td>1-25<br><span class="insertion-note">ins@6</span></td>
-                                <td>1-25<br><span class="insertion-note">ins@6</span></td>
-                                <td>1-25<br><span class="insertion-note">ins@8</span></td>
-                                <td>1-24<br><span class="insertion-note">ins@8</span></td>
-                                <td>101-154</td>
-                            </tr>
-                            <tr class="cdr1">
-                                <td><strong>CDR1</strong></td>
-                                <td>27-38<br><span class="insertion-note">ins@31/32</span></td>
-                                <td>26-32<br><span class="insertion-note">ins@31</span></td>
-                                <td>26-35<br><span class="insertion-note">ins@35</span></td>
-                                <td>26-32<br><span class="insertion-note">ins@31</span></td>
-                                <td>25-42<br><span class="insertion-note">ins@36</span></td>
-                                <td>155-199<br><span class="insertion-note">gap@175-176</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW2</strong></td>
-                                <td>39-55</td>
-                                <td>33-49</td>
-                                <td>36-49</td>
-                                <td>33-49</td>
-                                <td>43-57</td>
-                                <td>201-250</td>
-                            </tr>
-                            <tr class="cdr2">
-                                <td><strong>CDR2</strong></td>
-                                <td>56-65<br><span class="insertion-note">ins@60/59</span></td>
-                                <td>50-57<br><span class="insertion-note">ins@52</span></td>
-                                <td>50-57<br><span class="insertion-note">ins@52</span></td>
-                                <td>50-57<br><span class="insertion-note">ins@52</span></td>
-                                <td>58-77<br><span class="insertion-note">ins@63</span></td>
-                                <td>251-299<br><span class="insertion-note">gap@271-272</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW3</strong></td>
-                                <td>66-104</td>
-                                <td>58-92<br><span class="insertion-note">82A,B,C</span></td>
-                                <td>58-92<br><span class="insertion-note">82A,B,C</span></td>
-                                <td>58-92<br><span class="insertion-note">ins@72</span></td>
-                                <td>78-106<br><span class="insertion-note">ins@85</span></td>
-                                <td>301-350</td>
-                            </tr>
-                            <tr class="cdr3">
-                                <td><strong>CDR3</strong></td>
-                                <td>105-117<br><span class="insertion-note">ins@111/112</span></td>
-                                <td>93-102<br><span class="insertion-note">ins@100</span></td>
-                                <td>93-102<br><span class="insertion-note">ins@100</span></td>
-                                <td>93-102<br><span class="insertion-note">ins@100</span></td>
-                                <td>107-138<br><span class="insertion-note">ins@123</span></td>
-                                <td>351-399<br><span class="insertion-note">gap@374</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW4</strong></td>
-                                <td>118-128</td>
-                                <td>103-113</td>
-                                <td>103-113</td>
-                                <td>103-113</td>
-                                <td>139-149</td>
-                                <td>401-449</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="section-header">Position-by-Position Chain Comparison (AHo Numbering)</div>
+            <div class="section-content">
+                <div class="description">
+                    <p>This table shows which AHo positions are typically occupied in Heavy (VH), Kappa (VK), and Lambda (VL) chains.
+                    Positions marked with <span class="check">&#10003;</span> are commonly present; positions marked with <span class="dash">-</span> are typically gaps.
+                    The "Unique To" column highlights positions that differentiate chain types.</p>
                 </div>
-            </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Region</th>
+                            <th>AHo</th>
+                            <th>Heavy (VH)</th>
+                            <th>Kappa (VK)</th>
+                            <th>Lambda (VL)</th>
+                            <th>Unique To</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- FW1: Positions 1-24 -->
+                        <tr class="fw-region common-all"><td class="region-cell" rowspan="24"><strong>FW1</strong><br>(1-24)</td><td class="position-num">1</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">2</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">3</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">4</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">5</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">6</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">7</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region insertion-pt"><td class="position-num">8</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>Insertion point (indels)</td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">9</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">10</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">11</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">12</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">13</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">14</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">15</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">16</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">17</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">18</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">19</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">20</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">21</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">22</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region conserved"><td class="position-num">23</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td><strong>Conserved Cys</strong></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">24</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
 
-            <div id="light" class="tab-content">
-                <div class="section-content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Region</th>
-                                <th class="scheme-header">IMGT</th>
-                                <th class="scheme-header">Chothia</th>
-                                <th class="scheme-header">Kabat</th>
-                                <th class="scheme-header">Martin</th>
-                                <th class="scheme-header">AHo</th>
-                                <th class="scheme-header">Wolfguy</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="fw">
-                                <td><strong>FW1</strong></td>
-                                <td>1-26</td>
-                                <td>1-23</td>
-                                <td>1-23</td>
-                                <td>1-23</td>
-                                <td>1-24<br><span class="insertion-note">ins@8</span></td>
-                                <td>501-550<br><span class="insertion-note">ins@508</span></td>
-                            </tr>
-                            <tr class="cdr1">
-                                <td><strong>CDR1</strong></td>
-                                <td>27-38<br><span class="insertion-note">ins@31/32</span></td>
-                                <td>24-34<br><span class="insertion-note">ins@30</span></td>
-                                <td>24-34<br><span class="insertion-note">ins@27</span></td>
-                                <td>24-34<br><span class="insertion-note">ins@30</span></td>
-                                <td>25-42<br><span class="insertion-note">ins@36</span></td>
-                                <td>551-599<br><span class="insertion-note">canonical</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW2</strong></td>
-                                <td>39-55</td>
-                                <td>35-49</td>
-                                <td>35-49</td>
-                                <td>35-49</td>
-                                <td>43-57</td>
-                                <td>601-650</td>
-                            </tr>
-                            <tr class="cdr2">
-                                <td><strong>CDR2</strong></td>
-                                <td>56-65<br><span class="insertion-note">ins@60/59</span></td>
-                                <td>50-54<br><span class="insertion-note">ins@52</span></td>
-                                <td>50-54<br><span class="insertion-note">ins@52</span></td>
-                                <td>50-54<br><span class="insertion-note">ins@52</span></td>
-                                <td>58-77<br><span class="insertion-note">ins@63</span></td>
-                                <td>651-699<br><span class="insertion-note">gap@673</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW3</strong></td>
-                                <td>66-104</td>
-                                <td>55-88<br><span class="insertion-note">ins@68</span></td>
-                                <td>55-88</td>
-                                <td>55-88<br><span class="insertion-note">ins@68</span></td>
-                                <td>78-106<br><span class="insertion-note">ins@85</span></td>
-                                <td>701-750<br><span class="insertion-note">ins@713-714</span></td>
-                            </tr>
-                            <tr class="cdr3">
-                                <td><strong>CDR3</strong></td>
-                                <td>105-117<br><span class="insertion-note">ins@111/112</span></td>
-                                <td>89-97<br><span class="insertion-note">ins@95</span></td>
-                                <td>89-97<br><span class="insertion-note">ins@95</span></td>
-                                <td>89-97<br><span class="insertion-note">ins@95</span></td>
-                                <td>107-138<br><span class="insertion-note">ins@123</span></td>
-                                <td>751-799<br><span class="insertion-note">gap@775</span></td>
-                            </tr>
-                            <tr class="fw">
-                                <td><strong>FW4</strong></td>
-                                <td>118-128</td>
-                                <td>98-108</td>
-                                <td>98-108</td>
-                                <td>98-108</td>
-                                <td>139-149</td>
-                                <td>801-849</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <!-- CDR1: Positions 25-42 -->
+                        <tr class="cdr1-region common-all"><td class="region-cell" rowspan="18"><strong>CDR1</strong><br>(25-42)</td><td class="position-num">25</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">26</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region unique-h"><td class="position-num">27</td><td class="check">&#10003;</td><td class="dash">-</td><td class="check">&#10003;</td><td>H, L</td><td>Gap in Kappa (2nd deletion)</td></tr>
+                        <tr class="cdr1-region"><td class="position-num">28</td><td class="dash">-</td><td class="dash">-</td><td class="dash">-</td><td>-</td><td>Gap in all chains (1st deletion)</td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">29</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">30</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">31</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">32</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">33</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">34</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">35</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region insertion-pt"><td class="position-num">36</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>Insertion point for long CDR1</td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">37</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">38</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">39</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">40</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">41</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr1-region common-all"><td class="position-num">42</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+
+                        <!-- FW2: Positions 43-57 -->
+                        <tr class="fw-region conserved"><td class="region-cell" rowspan="15"><strong>FW2</strong><br>(43-57)</td><td class="position-num">43</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td><strong>Conserved Trp</strong></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">44</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">45</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">46</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">47</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">48</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">49</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">50</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">51</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">52</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">53</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">54</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">55</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">56</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">57</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+
+                        <!-- CDR2: Positions 58-77 -->
+                        <tr class="cdr2-region common-all"><td class="region-cell" rowspan="20"><strong>CDR2</strong><br>(58-77)</td><td class="position-num">58</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">59</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">60</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">61</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">62</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region insertion-pt"><td class="position-num">63</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>Center of CDR2 gaps</td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">64</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">65</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">66</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region common-all"><td class="position-num">67</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">68</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">69</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">70</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">71</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">72</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">73</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">74</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">75</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">76</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+                        <tr class="cdr2-region unique-h"><td class="position-num">77</td><td class="check">&#10003;</td><td class="dash">-</td><td class="dash">-</td><td>H only</td><td>Heavy chain CDR2 is longer</td></tr>
+
+                        <!-- FW3: Positions 78-106 -->
+                        <tr class="fw-region common-all"><td class="region-cell" rowspan="29"><strong>FW3</strong><br>(78-106)</td><td class="position-num">78</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">79</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">80</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">81</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">82</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">83</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">84</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region insertion-pt"><td class="position-num">85</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>Insertion point</td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">86</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>First gap position</td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">87</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">88</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">89</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">90</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">91</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">92</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">93</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">94</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">95</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">96</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">97</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">98</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">99</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">100</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">101</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">102</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">103</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">104</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">105</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region conserved"><td class="position-num">106</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td><strong>Conserved Cys</strong></td></tr>
+
+                        <!-- CDR3: Positions 107-138 -->
+                        <tr class="cdr3-region common-all"><td class="region-cell" rowspan="32"><strong>CDR3</strong><br>(107-138)</td><td class="position-num">107</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">108</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">109</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">110</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">111</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">112</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">113</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">114</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">115</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">116</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">117</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">118</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">119</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">120</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">121</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">122</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region insertion-pt"><td class="position-num">123</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td>Center of CDR3 gaps/insertions</td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">124</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">125</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">126</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">127</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">128</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">129</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">130</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">131</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">132</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">133</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">134</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">135</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">136</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">137</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="cdr3-region common-all"><td class="position-num">138</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+
+                        <!-- FW4: Positions 139-149 -->
+                        <tr class="fw-region conserved"><td class="region-cell" rowspan="11"><strong>FW4</strong><br>(139-149)</td><td class="position-num">139</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td><strong>Conserved Trp/Phe</strong></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">140</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">141</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">142</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">143</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">144</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">145</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">146</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">147</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region common-all"><td class="position-num">148</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>All</td><td></td></tr>
+                        <tr class="fw-region unique-kl"><td class="position-num">149</td><td class="dash">-</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td>K, L</td><td>Light chains have extra position</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Summary of Chain-Specific Positions -->
+        <div class="section">
+            <div class="section-header">Summary: Chain-Specific Positions</div>
+            <div class="section-content">
+                <h2>Positions Unique to Specific Chains</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Chain Type</th>
+                            <th>Unique Positions</th>
+                            <th>Region</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="unique-h">
+                            <td><strong>Heavy (VH) Only</strong></td>
+                            <td>68-77</td>
+                            <td>CDR2</td>
+                            <td>Heavy chain CDR2 is significantly longer than light chains</td>
+                        </tr>
+                        <tr class="unique-h">
+                            <td><strong>Heavy (VH) + Lambda (VL)</strong></td>
+                            <td>27</td>
+                            <td>CDR1</td>
+                            <td>Kappa chains typically have a 2-residue gap at positions 27-28</td>
+                        </tr>
+                        <tr class="unique-kl">
+                            <td><strong>Light Chains Only (VK/VL)</strong></td>
+                            <td>149</td>
+                            <td>FW4</td>
+                            <td>Light chains have one extra C-terminal position</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="notes">
+                    <h4>Key Structural Differences</h4>
+                    <ul>
+                        <li><strong>CDR1:</strong> Kappa chains have gaps at both 27 and 28, while Heavy and Lambda typically only gap at 28</li>
+                        <li><strong>CDR2:</strong> Heavy chain CDR2 (IMGT 56-65) spans AHo 58-77, while light chain CDR2 only uses 58-67</li>
+                        <li><strong>CDR3:</strong> Length varies greatly but gap order (centered on 123) is the same for all chains</li>
+                        <li><strong>FW4:</strong> Light chains include position 149; heavy chains end at 148</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <!-- Conserved Residues -->
         <div class="section">
-            <div class="section-header">Conserved Residue Positions</div>
+            <div class="section-header">Conserved Residues Across All Chains</div>
             <div class="section-content">
                 <table>
                     <thead>
                         <tr>
-                            <th>Conserved Residue</th>
-                            <th>Location</th>
-                            <th class="scheme-header">IMGT</th>
-                            <th class="scheme-header">Chothia H</th>
-                            <th class="scheme-header">Chothia L</th>
-                            <th class="scheme-header">Kabat H</th>
-                            <th class="scheme-header">Kabat L</th>
-                            <th class="scheme-header">AHo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="conserved">Cys (1st)</td>
-                            <td>End of FW1</td>
-                            <td>23</td>
-                            <td>22</td>
-                            <td>23</td>
-                            <td>22</td>
-                            <td>23</td>
-                            <td>23</td>
-                        </tr>
-                        <tr>
-                            <td class="conserved">Trp</td>
-                            <td>Start of FW2</td>
-                            <td>41</td>
-                            <td>36</td>
-                            <td>35</td>
-                            <td>36</td>
-                            <td>35</td>
-                            <td>43</td>
-                        </tr>
-                        <tr>
-                            <td class="conserved">Cys (2nd)</td>
-                            <td>End of FW3</td>
-                            <td>104</td>
-                            <td>92</td>
-                            <td>88</td>
-                            <td>92</td>
-                            <td>88</td>
-                            <td>106</td>
-                        </tr>
-                        <tr>
-                            <td class="conserved">Trp/Phe</td>
-                            <td>Start of FW4</td>
-                            <td>118</td>
-                            <td>103</td>
-                            <td>98</td>
-                            <td>103</td>
-                            <td>98</td>
-                            <td>139</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Detailed Position Mapping - Heavy Chain -->
-        <div class="section">
-            <div class="section-header">Detailed Position Mapping - Heavy Chain (VH)</div>
-            <div class="section-content">
-                <p style="margin-bottom: 1rem; color: #666;">Position-by-position mapping using AHo as the reference (fewest insertion codes). Positions with "-" indicate gaps in that scheme.</p>
-                <table class="position-table">
-                    <thead>
-                        <tr>
+                            <th>AHo Position</th>
+                            <th>Residue</th>
                             <th>Region</th>
-                            <th>AHo</th>
-                            <th>IMGT</th>
-                            <th>Chothia</th>
-                            <th>Kabat</th>
-                            <th>Notes</th>
+                            <th>Function</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- FW1 -->
-                        <tr class="fw"><td rowspan="10"><strong>FW1</strong></td><td>1</td><td>1</td><td>1</td><td>1</td><td></td></tr>
-                        <tr class="fw"><td>2</td><td>2</td><td>2</td><td>2</td><td></td></tr>
-                        <tr class="fw"><td>3</td><td>3</td><td>3</td><td>3</td><td></td></tr>
-                        <tr class="fw"><td>4</td><td>4</td><td>4</td><td>4</td><td></td></tr>
-                        <tr class="fw"><td>5</td><td>5</td><td>5</td><td>5</td><td></td></tr>
-                        <tr class="fw"><td>6</td><td>6</td><td>6</td><td>6</td><td></td></tr>
-                        <tr class="fw"><td>7</td><td>7</td><td>7</td><td>7</td><td></td></tr>
-                        <tr class="fw"><td>8</td><td>8</td><td>8</td><td>8</td><td>Insertion point (Martin, AHo)</td></tr>
-                        <tr class="fw"><td>9</td><td>9</td><td>9</td><td>9</td><td></td></tr>
-                        <tr class="fw"><td>10</td><td>10</td><td>10</td><td>10</td><td></td></tr>
-                        <tr class="fw"><td>11</td><td>11</td><td>11</td><td>11</td><td></td></tr>
-                        <tr class="fw"><td>12</td><td>12</td><td>12</td><td>12</td><td></td></tr>
-                        <tr class="fw"><td>13</td><td>13</td><td>13</td><td>13</td><td></td></tr>
-                        <tr class="fw"><td>14</td><td>14</td><td>14</td><td>14</td><td></td></tr>
-                        <tr class="fw"><td>15</td><td>15</td><td>15</td><td>15</td><td></td></tr>
-                        <tr class="fw"><td>16</td><td>16</td><td>16</td><td>16</td><td></td></tr>
-                        <tr class="fw"><td>17</td><td>17</td><td>17</td><td>17</td><td></td></tr>
-                        <tr class="fw"><td>18</td><td>18</td><td>18</td><td>18</td><td></td></tr>
-                        <tr class="fw"><td>19</td><td>19</td><td>19</td><td>19</td><td></td></tr>
-                        <tr class="fw"><td>20</td><td>20</td><td>20</td><td>20</td><td></td></tr>
-                        <tr class="fw"><td>21</td><td>21</td><td>21</td><td>21</td><td></td></tr>
-                        <tr class="fw"><td>22</td><td>22</td><td>22</td><td>22</td><td></td></tr>
-                        <tr class="fw"><td>23</td><td>23</td><td>23</td><td>23</td><td class="conserved">Conserved Cys</td></tr>
-                        <tr class="fw"><td>24</td><td>24</td><td>24</td><td>24</td><td></td></tr>
-                        <!-- CDR1 -->
-                        <tr class="cdr1"><td rowspan="18"><strong>CDR1</strong></td><td>25</td><td>25</td><td>25</td><td>25</td><td></td></tr>
-                        <tr class="cdr1"><td>26</td><td>26</td><td>26</td><td>26</td><td>CDR1 start (Chothia/Kabat)</td></tr>
-                        <tr class="cdr1"><td>27</td><td>27</td><td>27</td><td>27</td><td>CDR1 start (IMGT)</td></tr>
-                        <tr class="cdr1"><td>28</td><td>28</td><td>28</td><td>28</td><td>Gap position (VH)</td></tr>
-                        <tr class="cdr1"><td>29</td><td>29</td><td>29</td><td>29</td><td></td></tr>
-                        <tr class="cdr1"><td>30</td><td>30</td><td>30</td><td>30</td><td></td></tr>
-                        <tr class="cdr1"><td>31</td><td>31</td><td>31</td><td>31</td><td>Insertion point (Chothia)</td></tr>
-                        <tr class="cdr1"><td>32</td><td>32</td><td>32</td><td>32</td><td></td></tr>
-                        <tr class="cdr1"><td>33</td><td>33</td><td>-</td><td>33</td><td></td></tr>
-                        <tr class="cdr1"><td>34</td><td>34</td><td>-</td><td>34</td><td></td></tr>
-                        <tr class="cdr1"><td>35</td><td>35</td><td>-</td><td>35</td><td>Insertion point (Kabat)</td></tr>
-                        <tr class="cdr1"><td>36</td><td>36</td><td>-</td><td>-</td><td>Insertion point (AHo)</td></tr>
-                        <tr class="cdr1"><td>37</td><td>37</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr1"><td>38</td><td>38</td><td>-</td><td>-</td><td>CDR1 end (IMGT)</td></tr>
-                        <tr class="cdr1"><td>39</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr1"><td>40</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr1"><td>41</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr1"><td>42</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <!-- FW2 -->
-                        <tr class="fw"><td rowspan="15"><strong>FW2</strong></td><td>43</td><td>39</td><td>33</td><td>36</td><td class="conserved">Conserved Trp</td></tr>
-                        <tr class="fw"><td>44</td><td>40</td><td>34</td><td>37</td><td></td></tr>
-                        <tr class="fw"><td>45</td><td>41</td><td>35</td><td>38</td><td></td></tr>
-                        <tr class="fw"><td>46</td><td>42</td><td>36</td><td>39</td><td></td></tr>
-                        <tr class="fw"><td>47</td><td>43</td><td>37</td><td>40</td><td></td></tr>
-                        <tr class="fw"><td>48</td><td>44</td><td>38</td><td>41</td><td></td></tr>
-                        <tr class="fw"><td>49</td><td>45</td><td>39</td><td>42</td><td></td></tr>
-                        <tr class="fw"><td>50</td><td>46</td><td>40</td><td>43</td><td></td></tr>
-                        <tr class="fw"><td>51</td><td>47</td><td>41</td><td>44</td><td></td></tr>
-                        <tr class="fw"><td>52</td><td>48</td><td>42</td><td>45</td><td></td></tr>
-                        <tr class="fw"><td>53</td><td>49</td><td>43</td><td>46</td><td></td></tr>
-                        <tr class="fw"><td>54</td><td>50</td><td>44</td><td>47</td><td></td></tr>
-                        <tr class="fw"><td>55</td><td>51</td><td>45</td><td>48</td><td></td></tr>
-                        <tr class="fw"><td>56</td><td>52</td><td>46</td><td>49</td><td></td></tr>
-                        <tr class="fw"><td>57</td><td>53</td><td>47</td><td>-</td><td></td></tr>
-                        <!-- CDR2 -->
-                        <tr class="cdr2"><td rowspan="20"><strong>CDR2</strong></td><td>58</td><td>54</td><td>48</td><td>-</td><td></td></tr>
-                        <tr class="cdr2"><td>59</td><td>55</td><td>49</td><td>-</td><td></td></tr>
-                        <tr class="cdr2"><td>60</td><td>56</td><td>50</td><td>50</td><td>CDR2 start (Chothia/Kabat)</td></tr>
-                        <tr class="cdr2"><td>61</td><td>57</td><td>51</td><td>51</td><td></td></tr>
-                        <tr class="cdr2"><td>62</td><td>58</td><td>52</td><td>52</td><td>Insertion point</td></tr>
-                        <tr class="cdr2"><td>63</td><td>59</td><td>-</td><td>-</td><td>Insertion point (AHo)</td></tr>
-                        <tr class="cdr2"><td>64</td><td>60</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr2"><td>65</td><td>61</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr2"><td>66</td><td>62</td><td>53</td><td>53</td><td></td></tr>
-                        <tr class="cdr2"><td>67</td><td>63</td><td>54</td><td>54</td><td></td></tr>
-                        <tr class="cdr2"><td>68</td><td>64</td><td>55</td><td>55</td><td></td></tr>
-                        <tr class="cdr2"><td>69</td><td>65</td><td>56</td><td>56</td><td></td></tr>
-                        <tr class="cdr2"><td>70</td><td>-</td><td>57</td><td>57</td><td></td></tr>
-                        <tr class="cdr2"><td>71</td><td>-</td><td>58</td><td>58</td><td></td></tr>
-                        <tr class="cdr2"><td>72</td><td>-</td><td>59</td><td>59</td><td></td></tr>
-                        <tr class="cdr2"><td>73</td><td>-</td><td>60</td><td>60</td><td></td></tr>
-                        <tr class="cdr2"><td>74</td><td>-</td><td>61</td><td>61</td><td></td></tr>
-                        <tr class="cdr2"><td>75</td><td>-</td><td>62</td><td>62</td><td></td></tr>
-                        <tr class="cdr2"><td>76</td><td>-</td><td>63</td><td>63</td><td></td></tr>
-                        <tr class="cdr2"><td>77</td><td>-</td><td>64</td><td>64</td><td></td></tr>
-                        <!-- FW3 -->
-                        <tr class="fw"><td rowspan="10"><strong>FW3</strong></td><td>78</td><td>66</td><td>58</td><td>58</td><td></td></tr>
-                        <tr class="fw"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="fw"><td>85</td><td>73</td><td>65</td><td>65</td><td>Insertion point (AHo)</td></tr>
-                        <tr class="fw"><td>86</td><td>74</td><td>66</td><td>66</td><td></td></tr>
-                        <tr class="fw"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="fw"><td>100</td><td>88</td><td>80</td><td>80</td><td></td></tr>
-                        <tr class="fw"><td>101</td><td>89</td><td>81</td><td>81</td><td></td></tr>
-                        <tr class="fw"><td>102</td><td>90</td><td>82</td><td>82</td><td>82A,B,C insertion positions</td></tr>
-                        <tr class="fw"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="fw"><td>106</td><td>104</td><td>92</td><td>92</td><td class="conserved">Conserved Cys</td></tr>
-                        <!-- CDR3 -->
-                        <tr class="cdr3"><td rowspan="10"><strong>CDR3</strong></td><td>107</td><td>105</td><td>93</td><td>93</td><td>CDR3 start</td></tr>
-                        <tr class="cdr3"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="cdr3"><td>123</td><td>111/112</td><td>100</td><td>100</td><td>Insertion point</td></tr>
-                        <tr class="cdr3"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="cdr3"><td>138</td><td>117</td><td>102</td><td>102</td><td>CDR3 end</td></tr>
-                        <tr class="cdr3"><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr3"><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr3"><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr3"><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <tr class="cdr3"><td>-</td><td>-</td><td>-</td><td>-</td><td></td></tr>
-                        <!-- FW4 -->
-                        <tr class="fw"><td rowspan="5"><strong>FW4</strong></td><td>139</td><td>118</td><td>103</td><td>103</td><td class="conserved">Conserved Trp/Phe</td></tr>
-                        <tr class="fw"><td>140</td><td>119</td><td>104</td><td>104</td><td></td></tr>
-                        <tr class="fw"><td>...</td><td>...</td><td>...</td><td>...</td><td></td></tr>
-                        <tr class="fw"><td>148</td><td>127</td><td>112</td><td>112</td><td></td></tr>
-                        <tr class="fw"><td>149</td><td>128</td><td>113</td><td>113</td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Scheme Characteristics -->
-        <div class="section">
-            <div class="section-header">Scheme Characteristics</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Scheme</th>
-                            <th>Total Positions</th>
-                            <th>Insertion Strategy</th>
-                            <th>Primary Use Case</th>
-                            <th>Notes</th>
+                        <tr class="conserved">
+                            <td class="position-num">23</td>
+                            <td><strong>Cys</strong></td>
+                            <td>FW1</td>
+                            <td>Forms disulfide bond with Cys106</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>IMGT</strong></td>
-                            <td>128 (1-128)</td>
-                            <td>Symmetric around CDR midpoints (111/112 for CDR3)</td>
-                            <td>Standardized international reference</td>
-                            <td>Based on structural alignment; most widely used</td>
+                        <tr class="conserved">
+                            <td class="position-num">43</td>
+                            <td><strong>Trp</strong></td>
+                            <td>FW2</td>
+                            <td>Core packing residue</td>
                         </tr>
-                        <tr>
-                            <td><strong>Chothia</strong></td>
-                            <td>~113</td>
-                            <td>Insertions on specific positions (31, 52, 100 for H)</td>
-                            <td>Structure-based analysis</td>
-                            <td>CDRs defined by structural loops</td>
+                        <tr class="conserved">
+                            <td class="position-num">106</td>
+                            <td><strong>Cys</strong></td>
+                            <td>FW3</td>
+                            <td>Forms disulfide bond with Cys23</td>
                         </tr>
-                        <tr>
-                            <td><strong>Kabat</strong></td>
-                            <td>~113</td>
-                            <td>Insertions on specific positions (35, 52, 100 for H)</td>
-                            <td>Sequence-based analysis</td>
-                            <td>CDRs defined by sequence variability</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Martin</strong></td>
-                            <td>~113</td>
-                            <td>Extended Chothia; insertions at 8, 72 for H</td>
-                            <td>Improved Chothia scheme</td>
-                            <td>Additional insertion points defined</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AHo</strong></td>
-                            <td>149 (1-149)</td>
-                            <td>Minimal insertions; most positions pre-allocated</td>
-                            <td>Comprehensive structural alignment</td>
-                            <td>Works for all Ig/TCR chains; fewest insertion codes</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Wolfguy</strong></td>
-                            <td>H: 101-449<br>L: 501-849</td>
-                            <td>Encodes chain type and region in number</td>
-                            <td>Engineering and computational analysis</td>
-                            <td>In-house scheme (Roche); no insertion codes needed</td>
+                        <tr class="conserved">
+                            <td class="position-num">139</td>
+                            <td><strong>Trp/Phe</strong></td>
+                            <td>FW4</td>
+                            <td>Core packing residue</td>
                         </tr>
                     </tbody>
                 </table>
-
-                <div class="notes">
-                    <h4>Key Differences</h4>
-                    <ul>
-                        <li><strong>IMGT</strong> uses a fixed 128-position scheme with symmetric insertions around loop centers</li>
-                        <li><strong>Chothia/Kabat</strong> define CDRs differently and place insertions at specific anchor residues</li>
-                        <li><strong>Martin</strong> extends Chothia with additional insertion points for rare sequences</li>
-                        <li><strong>AHo</strong> pre-allocates maximum expected positions, minimizing need for insertion codes</li>
-                        <li><strong>Wolfguy</strong> encodes chain identity (H vs L) and region directly in the position number</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- CDR Definitions -->
-        <div class="section">
-            <div class="section-header">CDR Boundary Definitions</div>
-            <div class="section-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th rowspan="2">CDR</th>
-                            <th colspan="2">IMGT</th>
-                            <th colspan="2">Chothia</th>
-                            <th colspan="2">Kabat</th>
-                            <th colspan="2">AHo</th>
-                        </tr>
-                        <tr>
-                            <th>Heavy</th>
-                            <th>Light</th>
-                            <th>Heavy</th>
-                            <th>Light</th>
-                            <th>Heavy</th>
-                            <th>Light</th>
-                            <th>Heavy</th>
-                            <th>Light</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="cdr1">
-                            <td><strong>CDR1</strong></td>
-                            <td>27-38</td>
-                            <td>27-38</td>
-                            <td>26-32</td>
-                            <td>24-34</td>
-                            <td>31-35</td>
-                            <td>24-34</td>
-                            <td>25-42</td>
-                            <td>25-42</td>
-                        </tr>
-                        <tr class="cdr2">
-                            <td><strong>CDR2</strong></td>
-                            <td>56-65</td>
-                            <td>56-65</td>
-                            <td>52-56</td>
-                            <td>50-56</td>
-                            <td>50-65</td>
-                            <td>50-56</td>
-                            <td>58-77</td>
-                            <td>58-77</td>
-                        </tr>
-                        <tr class="cdr3">
-                            <td><strong>CDR3</strong></td>
-                            <td>105-117</td>
-                            <td>105-117</td>
-                            <td>95-102</td>
-                            <td>89-97</td>
-                            <td>95-102</td>
-                            <td>89-97</td>
-                            <td>107-138</td>
-                            <td>107-138</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="notes">
-                    <h4>CDR Definition Notes</h4>
-                    <ul>
-                        <li><strong>IMGT CDRs</strong> are defined structurally based on the IMGT unique numbering</li>
-                        <li><strong>Chothia CDRs</strong> are based on structural loops observed in crystal structures</li>
-                        <li><strong>Kabat CDRs</strong> are based on sequence variability analysis</li>
-                        <li><strong>AHo</strong> uses the same positions for all chain types; gaps vary by chain type</li>
-                        <li>All schemes share the same general loop locations but differ in exact boundaries</li>
-                    </ul>
-                </div>
             </div>
         </div>
 
         <footer>
             <p>Generated by ANARCI - Antibody Numbering and Antigen Receptor ClassIfication</p>
-            <p>Reference: <a href="https://github.com/oxpig/ANARCI" target="_blank">github.com/oxpig/ANARCI</a></p>
+            <p>Based on AHo numbering scheme (Honegger & Plückthun, 2001)</p>
         </footer>
     </div>
-
-    <script>
-        function showTab(tabId) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Deactivate all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Show selected tab content
-            document.getElementById(tabId).classList.add('active');
-
-            // Activate selected tab
-            event.target.classList.add('active');
-        }
-    </script>
 </body>
 </html>
