@@ -24,7 +24,7 @@ Legend:
 | 5 | ✓ | ✓ | ✓ | All | |
 | 6 | ✓ | ✓ | ✓ | All | |
 | 7 | ✓ | ✓ | ✓ | All | |
-| **8** | ✓ | ✓ | ✓ | All | **Insertion point** |
+| **8** | - | ✓ | - | **K only** | VK insertion; gap in VH/VL |
 | 9 | ✓ | ✓ | ✓ | All | |
 | 10 | ✓ | ✓ | ✓ | All | |
 | 11 | ✓ | ✓ | ✓ | All | |
@@ -203,12 +203,14 @@ Legend:
 
 | Chain Type | Unique Positions | Region | Description |
 |------------|------------------|--------|-------------|
+| **Kappa (VK) Only** | 8 | FW1 | VK has extra residue; VH and VL have gap at position 8 |
 | **Heavy (VH) Only** | 68-77 | CDR2 | Heavy chain CDR2 is significantly longer than light chains |
 | **Heavy + Lambda** | 27 | CDR1 | Kappa chains typically have a 2-residue gap at positions 27-28 |
 | **Light Chains Only** | 149 | FW4 | Light chains have one extra C-terminal position |
 
 ### Key Structural Differences
 
+- **FW1:** Kappa has an extra residue at position 8; Heavy and Lambda have a gap here
 - **CDR1:** Kappa chains have gaps at both 27 and 28, while Heavy and Lambda typically only gap at 28
 - **CDR2:** Heavy chain CDR2 spans AHo 58-77 (20 positions), while light chain CDR2 only uses 58-67 (10 positions)
 - **CDR3:** Length varies greatly but gap order (centered on 123) is the same for all chains
