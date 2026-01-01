@@ -1,230 +1,205 @@
-# Antibody Chain Numbering Comparison
+# Antibody Numbering Schemes Comparison
 
-**ANARCI - Comparing Heavy, Kappa, and Lambda Chains using IMGT Numbering**
+**ANARCI - Cross-Scheme Position Mapping for Heavy (H), Kappa (K), and Lambda (L) Chains**
 
-This document compares which IMGT positions (1-128) are typically occupied in Heavy (VH), Kappa (VK), and Lambda (VL) chains, highlighting positions unique to specific chain types.
+This document compares position equivalences across IMGT, AHo, Chothia, Kabat, and Martin numbering schemes.
 
 ---
 
-## Position-by-Position Chain Comparison (IMGT Numbering)
+## Legend
 
-Legend:
-- ✓ = Position typically present
-- \- = Position typically a gap
-- **Bold** = Conserved residue or insertion point
+- `-` = Gap in that chain type
+- *Italic* = Insertion code position (e.g., 31A, 52B)
+- **Bold** = Conserved residue position
+
+---
+
+## Position Mapping Across All Numbering Schemes
 
 ### FR1 (IMGT 1-26)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 1 | ✓ | ✓ | ✓ | All | |
-| 2 | ✓ | ✓ | ✓ | All | |
-| 3 | ✓ | ✓ | ✓ | All | |
-| 4 | ✓ | ✓ | ✓ | All | |
-| 5 | ✓ | ✓ | ✓ | All | |
-| 6 | ✓ | ✓ | ✓ | All | |
-| 7 | ✓ | ✓ | ✓ | All | |
-| 8 | ✓ | ✓ | ✓ | All | |
-| 9 | ✓ | ✓ | ✓ | All | |
-| **10** | - | ✓ | - | **K only** | VK insertion; gap in VH/VL |
-| 11 | ✓ | ✓ | ✓ | All | |
-| 12 | ✓ | ✓ | ✓ | All | |
-| 13 | ✓ | ✓ | ✓ | All | |
-| 14 | ✓ | ✓ | ✓ | All | |
-| 15 | ✓ | ✓ | ✓ | All | |
-| 16 | ✓ | ✓ | ✓ | All | |
-| 17 | ✓ | ✓ | ✓ | All | |
-| 18 | ✓ | ✓ | ✓ | All | |
-| 19 | ✓ | ✓ | ✓ | All | |
-| 20 | ✓ | ✓ | ✓ | All | |
-| 21 | ✓ | ✓ | ✓ | All | |
-| 22 | ✓ | ✓ | ✓ | All | |
-| **23** | ✓ | ✓ | ✓ | All | **Conserved Cys (1st-CYS)** |
-| 24 | ✓ | ✓ | ✓ | All | |
-| 25 | ✓ | ✓ | ✓ | All | |
-| 26 | ✓ | ✓ | ✓ | All | |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
+| 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 |
+| 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 |
+| 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 |
+| 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 |
+| 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 |
+| 9 | 9 | 9 | *8A* | *8A* | *8A* | *6A* | 9 | *6A* | 9 | *8A* | 9 |
+| - | **10** | - | - | 9 | - | - | 10 | - | 10 | - | 10 |
+| 11 | 11 | 11 | 10 | 10 | 10 | 9 | 11 | 9 | 11 | 9 | 11 |
+| 12 | 12 | 12 | 11 | 11 | 11 | 10 | 12 | 10 | 12 | 10 | 12 |
+| 13 | 13 | 13 | 12 | 12 | 12 | 11 | 13 | 11 | 13 | 11 | 13 |
+| 14 | 14 | 14 | 13 | 13 | 13 | 12 | 14 | 12 | 14 | 12 | 14 |
+| 15 | 15 | 15 | 14 | 14 | 14 | 13 | 15 | 13 | 15 | 13 | 15 |
+| 16 | 16 | 16 | 15 | 15 | 15 | 14 | 16 | 14 | 16 | 14 | 16 |
+| 17 | 17 | 17 | 16 | 16 | 16 | 15 | 17 | 15 | 17 | 15 | 17 |
+| 18 | 18 | 18 | 17 | 17 | 17 | 16 | 18 | 16 | 18 | 16 | 18 |
+| 19 | 19 | 19 | 18 | 18 | 18 | 17 | 19 | 17 | 19 | 17 | 19 |
+| 20 | 20 | 20 | 19 | 19 | 19 | 18 | 20 | 18 | 20 | 18 | 20 |
+| 21 | 21 | 21 | 20 | 20 | 20 | 19 | 21 | 19 | 21 | 19 | 21 |
+| 22 | 22 | 22 | 21 | 21 | 21 | 20 | 22 | 20 | 22 | 20 | 22 |
+| **23** | **23** | **23** | 22 | 22 | 22 | 21 | 23 | 21 | 23 | 21 | 23 |
+| 24 | 24 | 24 | 23 | 23 | 23 | 22 | 24 | 22 | 24 | 22 | 24 |
+| 25 | 25 | 25 | 24 | 24 | 24 | 23 | 25 | 23 | 25 | 23 | 25 |
+| 26 | 26 | 26 | 25 | 25 | 25 | 24 | 26 | 24 | 26 | 24 | 26 |
+
+> **Position 10**: Kappa only (VH and VL have gap)
+> **Position 23**: Conserved Cys (1st-CYS)
 
 ### CDR1 (IMGT 27-38)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 27 | ✓ | ✓ | ✓ | All | |
-| 28 | ✓ | ✓ | ✓ | All | |
-| 29 | ✓ | ✓ | ✓ | All | |
-| 30 | ✓ | ✓ | ✓ | All | |
-| **31** | ✓ | ✓ | ✓ | All | **Insertion point (left)** |
-| **32** | ✓ | ✓ | ✓ | All | **Insertion point (right)** |
-| 33 | ✓ | ✓ | ✓ | All | |
-| 34 | ✓ | ✓ | ✓ | All | |
-| 35 | ✓ | ✓ | ✓ | All | |
-| 36 | ✓ | ✓ | ✓ | All | |
-| 37 | ✓ | ✓ | ✓ | All | |
-| 38 | ✓ | ✓ | ✓ | All | |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 27 | 27 | 27 | 26 | 26 | 26 | 25 | 27 | 25 | 27 | 25 | 27 |
+| 28 | 28 | 28 | 27 | 27 | 27 | 26 | 28 | 26 | 28 | 26 | 28 |
+| 29 | 29 | 29 | 28 | 28 | 28 | 27 | 29 | 27 | 29 | 27 | 29 |
+| 30 | 30 | 30 | 29 | 29 | 29 | 28 | 30 | 28 | 30 | 28 | 30 |
+| 31 | 31 | 31 | 30 | 30 | 30 | 29 | *30A* | 29 | *30A* | 29 | *30A* |
+| 32 | 32 | 32 | 31 | 31 | 31 | 30 | *30B* | 30 | *30B* | 30 | *30B* |
+| 33 | 33 | 33 | 32 | 32 | 32 | 31 | *30C* | 31 | *30C* | 31 | *30C* |
+| 34 | 34 | 34 | 33 | 33 | 33 | *31A* | *30D* | 32 | *30D* | *31A* | *30D* |
+| 35 | 35 | 35 | 34 | 34 | 34 | *31B* | 31 | 33 | 31 | *31B* | 31 |
+| 36 | 36 | 36 | 35 | 35 | 35 | *31C* | 32 | 34 | 32 | *31C* | 32 |
+| 37 | 37 | 37 | 36 | 36 | 36 | *31D* | 33 | 35 | 33 | *31D* | 33 |
+| 38 | 38 | 38 | 37 | 37 | 37 | 32 | 34 | *35A* | 34 | 32 | 34 |
 
 ### FR2 (IMGT 39-55)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 39 | ✓ | ✓ | ✓ | All | |
-| 40 | ✓ | ✓ | ✓ | All | |
-| **41** | ✓ | ✓ | ✓ | All | **Conserved Trp** |
-| 42 | ✓ | ✓ | ✓ | All | |
-| 43 | ✓ | ✓ | ✓ | All | |
-| 44 | ✓ | ✓ | ✓ | All | |
-| 45 | ✓ | ✓ | ✓ | All | |
-| 46 | ✓ | ✓ | ✓ | All | |
-| 47 | ✓ | ✓ | ✓ | All | |
-| 48 | ✓ | ✓ | ✓ | All | |
-| 49 | ✓ | ✓ | ✓ | All | |
-| 50 | ✓ | ✓ | ✓ | All | |
-| 51 | ✓ | ✓ | ✓ | All | |
-| 52 | ✓ | ✓ | ✓ | All | |
-| 53 | ✓ | ✓ | ✓ | All | |
-| 54 | ✓ | ✓ | ✓ | All | |
-| 55 | ✓ | ✓ | ✓ | All | |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 39 | 39 | 39 | 43 | 43 | 43 | 33 | 35 | 36 | 35 | 33 | 35 |
+| 40 | 40 | 40 | 44 | 44 | 44 | 34 | 36 | 37 | 36 | 34 | 36 |
+| **41** | **41** | **41** | 45 | 45 | 45 | 35 | 37 | 38 | 37 | 35 | 37 |
+| 42 | 42 | 42 | 46 | 46 | 46 | 36 | 38 | 39 | 38 | 36 | 38 |
+| 43 | 43 | 43 | 47 | 47 | 47 | 37 | 39 | 40 | 39 | 37 | 39 |
+| 44 | 44 | 44 | 48 | 48 | 48 | 38 | 40 | 41 | 40 | 38 | 40 |
+| 45 | 45 | 45 | 49 | 49 | 49 | 39 | 41 | 42 | 41 | 39 | 41 |
+| 46 | 46 | 46 | 50 | 50 | 50 | 40 | 42 | 43 | 42 | 40 | 42 |
+| 47 | 47 | 47 | 51 | 51 | 51 | 41 | 43 | 44 | 43 | 41 | 43 |
+| 48 | 48 | 48 | 52 | 52 | 52 | 42 | 44 | 45 | 44 | 42 | 44 |
+| 49 | 49 | 49 | 53 | 53 | 53 | 43 | 45 | 46 | 45 | 43 | 45 |
+| 50 | 50 | 50 | 54 | 54 | 54 | 44 | 46 | 47 | 46 | 44 | 46 |
+| 51 | 51 | 51 | 55 | 55 | 55 | 45 | 47 | 48 | 47 | 45 | 47 |
+| 52 | 52 | 52 | 56 | 56 | 56 | 46 | 48 | 49 | 48 | 46 | 48 |
+| 53 | 53 | 53 | 57 | 57 | 57 | 47 | 49 | *49A* | 49 | 47 | 49 |
+| 54 | 54 | 54 | 58 | 58 | 58 | 48 | 50 | *49B* | 50 | 48 | 50 |
+| 55 | 55 | 55 | 59 | 59 | 59 | 49 | 51 | *49C* | 51 | 49 | 51 |
+
+> **Position 41**: Conserved Trp
 
 ### CDR2 (IMGT 56-65)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 56 | ✓ | ✓ | ✓ | All | |
-| 57 | ✓ | ✓ | ✓ | All | |
-| 58 | ✓ | ✓ | ✓ | All | |
-| **59** | ✓ | ✓ | ✓ | All | **Insertion point (left)** |
-| **60** | ✓ | ✓ | ✓ | All | **Insertion point (right)** |
-| 61 | ✓ | ✓ | ✓ | All | |
-| 62 | ✓ | ✓ | ✓ | All | |
-| 63 | ✓ | ✓ | ✓ | All | |
-| 64 | ✓ | ✓ | ✓ | All | |
-| 65 | ✓ | ✓ | ✓ | All | |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 56 | 56 | 56 | 60 | 60 | 60 | 50 | 52 | 50 | 52 | 50 | 52 |
+| 57 | 57 | 57 | 61 | 61 | 61 | 51 | *52A* | 51 | *52A* | 51 | *52A* |
+| 58 | 58 | 58 | 62 | 62 | 62 | 52 | *52B* | 52 | *52B* | 52 | *52B* |
+| 59 | 59 | 59 | 63 | 63 | 63 | *52A* | *52C* | *52A* | *52C* | *52A* | *52C* |
+| 60 | 60 | 60 | 64 | 64 | 64 | *52B* | *52D* | *52B* | *52D* | *52B* | *52D* |
+| 61 | 61 | 61 | 65 | 65 | 65 | *52C* | *52E* | *52C* | *52E* | *52C* | *52E* |
+| 62 | 62 | 62 | 66 | 66 | 66 | *52D* | *52F* | *52D* | *52F* | *52D* | *52F* |
+| 63 | 63 | 63 | 67 | 67 | 67 | *52E* | *52G* | *52E* | *52G* | *52E* | *52G* |
+| 64 | 64 | 64 | 68 | 68 | 68 | 53 | 53 | 53 | 53 | 53 | 53 |
+| 65 | 65 | 65 | 69 | 69 | 69 | 54 | 54 | 54 | 54 | 54 | 54 |
 
-### FR3 (IMGT 66-104)
+### FR3 (IMGT 66-104) - Key Positions
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 66 | ✓ | ✓ | ✓ | All | |
-| 67 | ✓ | ✓ | ✓ | All | |
-| 68 | ✓ | ✓ | ✓ | All | |
-| 69 | ✓ | ✓ | ✓ | All | |
-| 70 | ✓ | ✓ | ✓ | All | |
-| 71 | ✓ | ✓ | ✓ | All | |
-| 72 | ✓ | ✓ | ✓ | All | |
-| **73** | ✓ | - | - | **H only** | Gap in light chains |
-| 74 | ✓ | ✓ | ✓ | All | |
-| 75 | ✓ | ✓ | ✓ | All | |
-| 76 | ✓ | ✓ | ✓ | All | |
-| 77 | ✓ | ✓ | ✓ | All | |
-| 78 | ✓ | ✓ | ✓ | All | |
-| 79 | ✓ | ✓ | ✓ | All | |
-| 80 | ✓ | ✓ | ✓ | All | |
-| 81 | ✓ | ✓ | ✓ | All | |
-| 82 | ✓ | ✓ | ✓ | All | |
-| 83 | ✓ | ✓ | ✓ | All | |
-| 84 | ✓ | ✓ | ✓ | All | |
-| 85 | ✓ | ✓ | ✓ | All | |
-| 86 | ✓ | ✓ | ✓ | All | |
-| 87 | ✓ | ✓ | ✓ | All | |
-| 88 | ✓ | ✓ | ✓ | All | |
-| **89** | ✓ | ✓ | ✓ | All | **Hydrophobic (conserved)** |
-| 90 | ✓ | ✓ | ✓ | All | |
-| 91 | ✓ | ✓ | ✓ | All | |
-| 92 | ✓ | ✓ | ✓ | All | |
-| 93 | ✓ | ✓ | ✓ | All | |
-| 94 | ✓ | ✓ | ✓ | All | |
-| 95 | ✓ | ✓ | ✓ | All | |
-| 96 | ✓ | ✓ | ✓ | All | |
-| 97 | ✓ | ✓ | ✓ | All | |
-| 98 | ✓ | ✓ | ✓ | All | |
-| 99 | ✓ | ✓ | ✓ | All | |
-| 100 | ✓ | ✓ | ✓ | All | |
-| 101 | ✓ | ✓ | ✓ | All | |
-| 102 | ✓ | ✓ | ✓ | All | |
-| 103 | ✓ | ✓ | ✓ | All | |
-| **104** | ✓ | ✓ | ✓ | All | **Conserved Cys (2nd-CYS)** |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 66 | 66 | 66 | 70 | 70 | 70 | 55 | 55 | 55 | 55 | 55 | 55 |
+| 72 | 72 | 72 | 76 | 76 | 76 | 61 | 61 | 61 | 61 | 61 | 61 |
+| **73** | - | - | 77 | - | - | 62 | - | 62 | - | 62 | - |
+| 74 | 74 | 74 | 78 | 78 | 78 | 63 | 62 | 63 | 62 | 63 | 62 |
+| **89** | **89** | **89** | 93 | 93 | 93 | 78 | 77 | 78 | 77 | 78 | 77 |
+| 93 | 93 | 93 | 97 | 97 | 97 | 82 | 81 | 82 | 81 | 82 | 81 |
+| 94 | 94 | 94 | 98 | 98 | 98 | *82A* | 82 | *82A* | 82 | *82A* | 82 |
+| 95 | 95 | 95 | 99 | 99 | 99 | *82B* | 83 | *82B* | 83 | *82B* | 83 |
+| 96 | 96 | 96 | 100 | 100 | 100 | *82C* | 84 | *82C* | 84 | *82C* | 84 |
+| **104** | **104** | **104** | 108 | 108 | 108 | 90 | 92 | 90 | 92 | 90 | 92 |
+
+> **Position 73**: Heavy only (VK and VL have gap)
+> **Position 89**: Conserved hydrophobic
+> **Position 104**: Conserved Cys (2nd-CYS)
 
 ### CDR3 (IMGT 105-117)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| 105 | ✓ | ✓ | ✓ | All | |
-| 106 | ✓ | ✓ | ✓ | All | |
-| 107 | ✓ | ✓ | ✓ | All | |
-| 108 | ✓ | ✓ | ✓ | All | |
-| 109 | ✓ | ✓ | ✓ | All | |
-| 110 | ✓ | ✓ | ✓ | All | |
-| **111** | ✓ | ✓ | ✓ | All | **Insertion point (left)** |
-| **112** | ✓ | ✓ | ✓ | All | **Insertion point (right)** |
-| 113 | ✓ | ✓ | ✓ | All | |
-| 114 | ✓ | ✓ | ✓ | All | |
-| 115 | ✓ | ✓ | ✓ | All | |
-| 116 | ✓ | ✓ | ✓ | All | |
-| 117 | ✓ | ✓ | ✓ | All | |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| 105 | 105 | 105 | 109 | 109 | 109 | 91 | 93 | 91 | 93 | 91 | 93 |
+| 106 | 106 | 106 | 110 | 110 | 110 | 92 | 94 | 92 | 94 | 92 | 94 |
+| 107 | 107 | 107 | 111 | 111 | 111 | 93 | 95 | 93 | 95 | 93 | 95 |
+| 108 | 108 | 108 | 112 | 112 | 112 | 94 | *95A* | 94 | *95A* | 94 | *95A* |
+| 109 | 109 | 109 | 113 | 113 | 113 | 95 | *95B* | 95 | *95B* | 95 | *95B* |
+| 110 | 110 | 110 | 114 | 114 | 114 | 96 | *95C* | 96 | *95C* | 96 | *95C* |
+| 111 | 111 | 111 | 115 | 115 | 115 | 97 | *95D* | 97 | *95D* | 97 | *95D* |
+| 112 | 112 | 112 | 116 | 116 | 116 | 98 | *95E* | 98 | *95E* | 98 | *95E* |
+| 113 | 113 | 113 | 117 | 117 | 117 | 99 | *95F* | 99 | *95F* | 99 | *95F* |
+| 114 | 114 | 114 | 118 | 118 | 118 | *100A* | 96 | *100A* | 96 | *100A* | 96 |
+| 115 | 115 | 115 | 119 | 119 | 119 | *100B* | 97 | *100B* | 97 | *100B* | 97 |
+| 116 | 116 | 116 | 120 | 120 | 120 | *100C* | *97A* | *100C* | *97A* | *100C* | *97A* |
+| 117 | 117 | 117 | 121 | 121 | 121 | 100 | *97B* | 100 | *97B* | 100 | *97B* |
 
 ### FR4 (IMGT 118-128)
 
-| IMGT | Heavy | Kappa | Lambda | Unique To | Notes |
-|------|-------|-------|--------|-----------|-------|
-| **118** | ✓ | ✓ | ✓ | All | **Conserved Trp/Phe (J-TRP/J-PHE)** |
-| 119 | ✓ | ✓ | ✓ | All | |
-| 120 | ✓ | ✓ | ✓ | All | |
-| 121 | ✓ | ✓ | ✓ | All | |
-| 122 | ✓ | ✓ | ✓ | All | |
-| 123 | ✓ | ✓ | ✓ | All | |
-| 124 | ✓ | ✓ | ✓ | All | |
-| 125 | ✓ | ✓ | ✓ | All | |
-| 126 | ✓ | ✓ | ✓ | All | |
-| 127 | ✓ | ✓ | ✓ | All | |
-| **128** | ✓ | - | - | **H only** | Light chains end at 127 |
+| IMGT H | IMGT K | IMGT L | AHo H | AHo K | AHo L | Chothia H | Chothia K/L | Kabat H | Kabat K/L | Martin H | Martin K/L |
+|--------|--------|--------|-------|-------|-------|-----------|-------------|---------|-----------|----------|------------|
+| **118** | **118** | **118** | 139 | 139 | 139 | 101 | 98 | 101 | 98 | 101 | 98 |
+| 119 | 119 | 119 | 140 | 140 | 140 | 102 | 99 | 102 | 99 | 102 | 99 |
+| 120 | 120 | 120 | 141 | 141 | 141 | 103 | 100 | 103 | 100 | 103 | 100 |
+| 121 | 121 | 121 | 142 | 142 | 142 | 104 | 101 | 104 | 101 | 104 | 101 |
+| 122 | 122 | 122 | 143 | 143 | 143 | 105 | 102 | 105 | 102 | 105 | 102 |
+| 123 | 123 | 123 | 144 | 144 | 144 | 106 | 103 | 106 | 103 | 106 | 103 |
+| 124 | 124 | 124 | 145 | 145 | 145 | 107 | 104 | 107 | 104 | 107 | 104 |
+| 125 | 125 | 125 | 146 | 146 | 146 | 108 | 105 | 108 | 105 | 108 | 105 |
+| 126 | 126 | 126 | 147 | 147 | 147 | 109 | 106 | 109 | 106 | 109 | 106 |
+| 127 | 127 | 127 | 148 | 148 | 148 | 110 | 107 | 110 | 107 | 110 | 107 |
+| **128** | - | - | 149 | - | - | 111 | - | 111 | - | 111 | - |
+
+> **Position 118**: Conserved Trp/Phe (J-TRP/J-PHE)
+> **Position 128**: Heavy only (light chains end at 127)
 
 ---
 
-## Summary: Chain-Specific Positions
+## Key Chain-Specific Positions
 
-| Chain Type | IMGT Position | Region | Description |
-|------------|---------------|--------|-------------|
-| **Kappa (VK) Only** | 10 | FR1 | VK has extra residue; VH and VL have gap at position 10 |
-| **Heavy (VH) Only** | 73 | FR3 | VH has residue; VK and VL have gap at position 73 |
-| **Heavy (VH) Only** | 128 | FR4 | VH ends at 128; VK and VL end at 127 |
-
-### Key Structural Differences (IMGT Numbering)
-
-- **FR1 Position 10:** Kappa has an extra residue; Heavy and Lambda have a gap here
-- **FR3 Position 73:** Heavy has a residue; Kappa and Lambda have a gap here
-- **FR4 Position 128:** Heavy chains include position 128; Light chains end at 127
-- **CDR lengths:** CDR1/2/3 can vary in length; insertions placed symmetrically around 31-32, 59-60, and 111-112
+| Chain | IMGT | AHo | Chothia H | Kabat H | Region | Description |
+|-------|------|-----|-----------|---------|--------|-------------|
+| **K only** | 10 | 9 | - | - | FR1 | Kappa has extra residue; VH and VL have gap |
+| **H only** | 73 | 77 | 62 | 62 | FR3 | Heavy has residue; VK and VL have gap |
+| **H only** | 128 | 149 | 111 | 111 | FR4 | Heavy extends to 128; light chains end at 127 |
 
 ---
 
-## Conserved Residues Across All Chains (IMGT)
+## Numbering Scheme Characteristics
 
-| IMGT Position | Residue | Region | Function |
-|---------------|---------|--------|----------|
-| **23** | Cys | FR1 | 1st-CYS: Forms disulfide bond with Cys104 |
-| **41** | Trp | FR2 | CONSERVED-TRP: Core packing residue |
-| **89** | Hydrophobic | FR3 | Conserved hydrophobic amino acid |
-| **104** | Cys | FR3 | 2nd-CYS: Forms disulfide bond with Cys23 |
-| **118** | Trp/Phe | FR4 | J-TRP or J-PHE: Core packing residue |
+| Scheme | Max Positions | CDR Insertion Points | Notes |
+|--------|---------------|---------------------|-------|
+| **IMGT** | 128 | 31-32, 59-60, 111-112 (symmetric) | Reference scheme; all positions explicit |
+| **AHo** | 149 | 36, 63, 123 (symmetric) | Most positions without insertion codes; indel at position 8 |
+| **Chothia** | H:113, L:107 | H:31/52/100, L:30/52/95 | Structure-based; heavy uses 82ABC for FW3 |
+| **Kabat** | H:113, L:107 | H:35/52/100, L:27/52/95 | Sequence-based; similar to Chothia |
+| **Martin** | H:113, L:107 | H:31/52/72/100, L:30/52/68/95 | Extended Chothia; adds FW3 insertion points |
 
 ---
 
-## IMGT Region Definitions
+## Notes
 
-| Region | IMGT Positions | Total | Description |
-|--------|----------------|-------|-------------|
-| **FR1** | 1-26 | 26 | Framework Region 1 |
-| **CDR1** | 27-38 | 12 | Complementarity Determining Region 1 (insertions at 31-32) |
-| **FR2** | 39-55 | 17 | Framework Region 2 |
-| **CDR2** | 56-65 | 10 | Complementarity Determining Region 2 (insertions at 59-60) |
-| **FR3** | 66-104 | 39 | Framework Region 3 |
-| **CDR3** | 105-117 | 13 | Complementarity Determining Region 3 (insertions at 111-112) |
-| **FR4** | 118-128 | 11 | Framework Region 4 (J-region) |
+- *Italic* positions indicate insertion codes (e.g., 31A, 52B) where the scheme has fewer positions than IMGT
+- `-` indicates a gap in that chain type at that position
+- **Bold** positions are conserved residue positions (Cys23, Trp41, Cys104, Trp/Phe118)
+- AHo numbering goes up to 149, while IMGT uses 128 positions
+- Chothia/Kabat/Martin use ~113 positions for heavy, ~107 for light chains
 
 ---
 
 ## References
 
-- **IMGT**: Lefranc et al. (2003) IMGT unique numbering for immunoglobulin and T cell receptor variable domains and Ig superfamily V-like domains. Dev Comp Immunol 27:55-77
-- **IMGT Website**: https://www.imgt.org
+- **IMGT**: https://www.imgt.org
+- **AHo**: https://www.bioc.uzh.ch/plueckthun/antibody/Numbering/
 - **ANARCI**: https://github.com/oxpig/ANARCI
 
 ---
