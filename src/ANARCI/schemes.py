@@ -388,8 +388,9 @@ def number_imgt(state_vector, sequence):
     
     n_regions = 7
 
-    exclude_deletions = [1,3,5]    
-    
+    # Allow insertion codes in all regions (FW1-4 and CDR1-3)
+    exclude_deletions = [0, 1, 2, 3, 4, 5, 6]
+
     _regions, startindex, endindex = _number_regions(sequence, state_vector, state_string , region_string,  region_index_dict, rels, n_regions, exclude_deletions)
     
     ###############
